@@ -1,0 +1,1 @@
+node==v22.13.0  # Use latest version as possible for setting up server
