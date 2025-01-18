@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatMe</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    header {
+        background-color: #000000;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20vh;
+        font-family: "Poppins", sans-serif;
+        font-weight: 900;
+    }
+
+    .key-container .key {
+        font-size: 8vw;
+        display: inline-block;
+        letter-spacing: -1vw;
+        transition: transform 0.2s;
+    }
+
+    @keyframes pressDown1 {
+        30%,
+        40%,
+        100% {
+          transform: translateY(0);
+        }
+        75% {transform: translateY(10px);
+        }
+    }
+  
+    @keyframes pressDown2 {
+        70%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        75% {
+          transform: translateY(10px);
+        }
+    }
+  
+    @keyframes pressDown3 {
+        30%,
+        40%,
+        100% {
+          transform: translateY(0);
+        }
+        35% {
+          transform: translateY(10px);
+        }
+    }
+  
+    @keyframes pressDown4 {
+        40%,
+        50%,
+        100% {
+          transform: translateY(0);
+        }
+        45% {
+          transform: translateY(10px);
+        }
+    }
+  
+    @keyframes pressDown5 {
+        20%,
+        30%,
+        100% {
+          transform: translateY(0);
+        }
+        25% {
+          transform: translateY(10px);
+        }
+    }
+  
+    @keyframes pressDown6 {
+        60%,
+        70%,
+        100% {
+          transform: translateY(0);
+        }
+        65% {
+          transform: translateY(10px);
+        }
+    }
+  
+    @keyframes pressDown7 {
+        10%,
+        20%,
+        100% {
+          transform: translateY(0);
+        }
+        15% {
+          transform: translateY(10px);
+        }
+    }
+  
+    @keyframes pressDown8 {
+        35%,
+        45%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+            transform: translateY(10px);
+        }
+    }
+
+    @keyframes pressDown9 {
+        30%,
+        40%,
+        100% {
+          transform: translateY(0);
+        }
+        35% {
+          transform: translateY(10px);
+        }
+    }
+
+    .key:nth-child(1) {
+        animation: pressDown1 2s infinite;
+    }
+  
+    .key:nth-child(2) {
+        animation: pressDown2 3s infinite;
+    }
+  
+    .key:nth-child(3) {
+        animation: pressDown3 4s infinite;
+    }
+  
+    .key:nth-child(4) {
+        animation: pressDown4 2.5s infinite;
+    }
+  
+    .key:nth-child(5) {
+        animation: pressDown5 2.5s infinite;
+    }
+  
+    .key:nth-child(6) {
+        animation: pressDown6 3.5s infinite;
+    }
+  
+    .key:nth-child(7) {
+        animation: pressDown7 2.2s infinite;
+    }
+  
+    .key:nth-child(8) {
+        animation: pressDown8 3.2s infinite;
+    }
+
+    .key:nth-child(9) {
+        animation: pressDown9 2.4s infinite;
+    }
+
+    .main-container {
+        height: 55vh;
+        color: #555555;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .input-name label {
+        font-size: 5vh;
+    }
+
+    .input-name #name {
+        font-size: 5vh;
+    }
+
+    .join-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3vh;
+    }
+
+    .message-container {
+        box-sizing: border-box;
+        display: none;
+        padding: 5px;
+    }
+
+    .message-title {
+        color: black;
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .message-area {
+        position: relative;
+        border: 2px solid #717171;
+        height: 45vh;
+        width: 70vw;
+        padding: 4px;
+        overflow-y: h;
+        margin-bottom: 8vh;
+    }
+
+    .message-area #welcome-text {
+        color: #dd1eb4b0;
+        font-weight: 900;
+    }
+
+    .message-input {
+        box-sizing: border-box;
+        position: fixed;
+        bottom: 22vh;
+        left: 15vw;
+    }
+
+    .message-input #message-text {
+        padding: 5px;
+        height: 3vh;
+        width: 69vw;
+        border: 1px inset rgb(110, 110, 110);
+    }
+
+    .join-container #listener {
+        width: 20vw;
+        font-size: 5vh;
+        color: #555555;
+        border-radius: 80vw;
+        box-shadow: 0 5px 0 0;
+        transition: all 0.1s ease;
+    }
+
+    .join-container #listener:active {
+        box-shadow: 0 0 0 0;
+        transform: translateY(5px);
+    }
+
+    footer {
+        height: 20vh;
+        background-color: #1A1A1A;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1vw;
+    }
+
+    footer a {
+        text-decoration: none;
+        color: white;
+        font-size: 4vh;
+        transition: all 0.5 linear;
+    }
+
+    footer span {
+        font-size: 3vh;
+        color: #555555;
+    }
+
+    footer a:hover {
+        color: #3C3C3C;
+        font-weight: lighter;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <section class="key-container">
+            <span class="key">C</span>
+            <span class="key">h</span>
+            <span class="key">a</span>
+            <span class="key">t</span>
+            <span class="key">M</span>
+            <span class="key">e</span>
+            <span class="key">.</span>
+            <span class="key">.</span>
+            <span class="key">.</span>
+        </section>
+    </header>
+    <section class="main-container">
+
+        <!--Prompts user to join first-->
+        <div class="join-container">
+            <div class="input-name">
+                <label for="name">Enter your name:</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <br>
+            <button id="listener">Join</button>
+        </div>
+
+        <!--Container for messages-->
+        <div class="message-container">
+            <!--Message title-->
+            <div class="message-title">
+                <span>Messages:</span>
+            </div>
+            <!--Message area container-->
+            <div class="message-area">
+                <p id="welcome-text">Welcome! Please do not share any sensitive info here.</p>
+            </div>
+            <div class="message-input">
+                <center>
+                    <input type="text" name="message" id="message-text" placeholder='Press "Enter" when you want to send a message.'>
+                </center>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="logo">
+            <a href="https://github.com/Aureeeus" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://discordapp.com/users/677434477625999361" target="_blank"><i class="fa-brands fa-discord"></i></a>
+            <a href="https:t.me/zliec" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+        </div>
+        <span>&copy; 2025 ChatMe. All rights reserved.</span>
+    </footer>
+    <script src="https://kit.fontawesome.com/f159d0cdd4.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
+    <script>
+        const socket = io()
+        document.addEventListener('DOMContentLoaded', () => {
+            const joinContainer = document.querySelector('.join-container');
+            const messageContainer = document.querySelector('.message-container');
+            const joinButton = document.getElementById('listener');
+            const inputBox = document.getElementById('name');
+            const messageArea = document.querySelector('.message-area');
+            const userMessage = document.getElementById('message-text');
+            const user = {
+                name: '',
+                color: '',
+            }
+
+            function generateRandomColor() {
+                let letters = '0123456789ABCDEF';
+                let color = '#';
+
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 17)];
+                }
+
+                user.color = color;
+            }
+            function checkOverflow() {
+                let latestMessage = messageArea.querySelector('p:last-of-type')
+                if (messageArea.scrollHeight > messageArea.clientHeight && latestMessage) {
+                    messageArea.style.overflowY = 'scroll';
+                    latestMessage.scrollIntoView({
+                        behavior: "smooth",
+                        block: "end"
+                    });
+                } else {
+                    return;
+                }
+            }
+
+            joinButton.addEventListener('click', () => {
+                let userName = inputBox.value.trim();
+                if (userName) {
+                    joinContainer.style.display = 'none';
+                    messageContainer.style.display = 'block';
+                    user.name = userName;
+                    generateRandomColor();
+                    socket.emit('userJoins', userName);
+                } else {
+                    alert('Please enter a name first before joining!');
+                }
+            });
+            inputBox.addEventListener('keyup', event => {
+                let userName = inputBox.value.trim();
+                if (event.key === 'Enter' && userName) {
+                    joinContainer.style.display = 'none';
+                    messageContainer.style.display = 'block';
+                    user.name = userName
+                    generateRandomColor();
+                    socket.emit('userJoins', userName);
+                } else if (event.key === 'Enter' && !userName) {
+                    alert('Please enter a name first before joining!');
+                }
+            })
+            userMessage.addEventListener('keyup', event => {
+                let message = userMessage.value;
+                if (event.key === 'Enter' && message) {
+                    userMessage.value = '';
+                    socket.emit('sendMessage', user.name, message, user.color);
+                }
+            });
+
+            socket.on('addUserJoin', (username) => {
+                let paragraph = document.createElement('p');
+                paragraph.innerHTML = `<span>${username}</span> has joined that chat.`;
+                let span = paragraph.querySelector('span');
+                span.style.color = '#1A1A1A';
+                span.style.fontWeight = '900';
+                messageArea.appendChild(paragraph);
+            });
+            socket.on('broadcastMessage', (name, message, color) => {
+                let paragraph = document.createElement('p');
+                paragraph.innerHTML = `<span>${name}:</span> ${message}`;
+                let span = paragraph.querySelector('span');
+                span.style.color = color;
+
+                messageArea.appendChild(paragraph);
+                checkOverflow();
+            });
+        });
+    </script>
+</body>
+</html>
